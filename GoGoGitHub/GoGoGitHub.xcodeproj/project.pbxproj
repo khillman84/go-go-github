@@ -17,6 +17,7 @@
 		E5231A991E9334A10037CBDA /* MyID.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5231A981E9334A10037CBDA /* MyID.swift */; };
 		E55C290E1E940C11009D95AD /* RepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55C290D1E940C11009D95AD /* RepoViewController.swift */; };
 		E55C29101E940D5D009D95AD /* UIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55C290F1E940D5D009D95AD /* UIExtensions.swift */; };
+		E55C29121E941958009D95AD /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55C29111E941958009D95AD /* Repository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		E5231A981E9334A10037CBDA /* MyID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyID.swift; sourceTree = "<group>"; };
 		E55C290D1E940C11009D95AD /* RepoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoViewController.swift; sourceTree = "<group>"; };
 		E55C290F1E940D5D009D95AD /* UIExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIExtensions.swift; sourceTree = "<group>"; };
+		E55C29111E941958009D95AD /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				E55C290F1E940D5D009D95AD /* UIExtensions.swift */,
+				E55C29111E941958009D95AD /* Repository.swift */,
 				E5231A921E92C9150037CBDA /* GitHub.swift */,
 				E5231A981E9334A10037CBDA /* MyID.swift */,
 				E5231A961E92EC2A0037CBDA /* FoundationExtensions.swift */,
@@ -179,6 +182,7 @@
 				E5231A971E92EC2A0037CBDA /* FoundationExtensions.swift in Sources */,
 				E55C29101E940D5D009D95AD /* UIExtensions.swift in Sources */,
 				E5231A931E92C9150037CBDA /* GitHub.swift in Sources */,
+				E55C29121E941958009D95AD /* Repository.swift in Sources */,
 				E55C290E1E940C11009D95AD /* RepoViewController.swift in Sources */,
 				E5231A951E92CE640037CBDA /* GitHubAuthController.swift in Sources */,
 				E5231A811E92B1E10037CBDA /* AppDelegate.swift in Sources */,
