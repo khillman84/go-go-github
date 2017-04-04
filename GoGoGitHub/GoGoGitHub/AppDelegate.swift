@@ -20,11 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        presentAuthController()
-//        if let token = UserDefaults.standard.getAccessToken() {
-//            print(token)
-//        } else {
-//        }
+        if let token = UserDefaults.standard.getAccessToken() {
+            print(token)
+        } else {
+            presentAuthController()
+        }
         
         return true
     }

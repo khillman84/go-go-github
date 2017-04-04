@@ -84,8 +84,17 @@ class GitHub {
                     if error != nil { complete(success: false) }
                     guard let data = data else { complete(success: false); return }
                     if let dataString = String(data: data, encoding: .utf8) {
-                        print("line 87 \(dataString)")
-                        if UserDefaults.standard.save(accessToken: dataString) {
+                        var token : String = ""
+                        let components = dataString.components(separatedBy: "&")
+                        
+                        for component in components {
+                            if component.contains("access_token") {
+                                token = component.components(separatedBy: "=").last!
+                                print(token)
+                            }
+                        }
+                        
+                        if UserDefaults.standard.save(accessToken: token) {
                             print("Saved successfully")
                             
                         }
