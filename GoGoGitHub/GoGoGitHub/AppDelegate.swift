@@ -45,16 +45,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
-//        let code = try? GitHub.shared.getCodeFrom(url: url)
-//        
-//        print(code ?? "No Code")
-//        
-//        let accessToken = UserDefaults.standard.getAccessToken()
+        let code = try? GitHub.shared.getCodeFrom(url: url)
         
-        GitHub.shared.tokenRequestFor(url: url, saveOptions: .userDefaults) { (success) in
-            if let authViewController = self.authController, let repoViewController = self.repoController {
-                authViewController.dismissAuthController()
-                repoViewController.update()
+        print(code ?? "No Code")
+        
+        let accessToken = UserDefaults.standard.getAccessToken()
+        
+        if accessToken == nil || accessToken == "Not Found" {
+            GitHub.shared.tokenRequestFor(url: url, saveOptions: .userDefaults) { (success) in
+                if let authViewController = self.authController, let repoViewController = self.repoController {
+                    authViewController.dismissAuthController()
+                    repoViewController.update()
+                }
             }
         }
         return true
