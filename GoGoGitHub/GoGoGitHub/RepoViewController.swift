@@ -8,13 +8,23 @@
 
 import UIKit
 
-class RepoViewController: UIViewController {
+class RepoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    var repos = [Repository]() {
+        didSet {
+            self.gitRepoList.reloadData()
+        }
+    }
+    
+    @IBOutlet weak var gitRepoList: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.gitRepoList.dataSource = self
+        self.gitRepoList.delegate = self
+        
         update()
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,10 +33,27 @@ class RepoViewController: UIViewController {
     }
     
     func update() {
-        print("update repo controller here")
+        
         GitHub.shared.getRepos { (repositories) in
-            //update tableView with the repos we get back
-            print(repositories?.first)
+            OperationQueue.main.addOperation {
+                self.repos = repositories ?? []
+                print(self.repos.count)
+            }
         }
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return repos.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "repoNames", for: indexPath)
+        
+        let repo = self.repos[indexPath.row]
+        cell.textLabel?.text = repo.name
+        
+        return cell
+    }
+
 }

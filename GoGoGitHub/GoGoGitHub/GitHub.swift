@@ -79,10 +79,14 @@ class GitHub {
             let requestString = "\(kOAuthBaseURLString)access_token?client_id=\(gitHubClientID)&client_secret=\(gitHubClientSecret)&code=\(code)"
             
             if let requestURL = URL(string: requestString) {
+                
                 let session = URLSession(configuration: .default)
+                
                 session.dataTask(with: requestURL, completionHandler: { (data, response, error) in
                     if error != nil { complete(success: false) }
+                    
                     guard let data = data else { complete(success: false); return }
+                    
                     if let dataString = String(data: data, encoding: .utf8) {
                         var token : String = ""
                         let components = dataString.components(separatedBy: "&")
@@ -128,7 +132,7 @@ class GitHub {
                 
                 do {
                     if let rootJson = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String : Any]] {
-                        print(rootJson)
+                        print(rootJson.last ?? "No Root JSON")
                         for repositoryJSON in rootJson {
                             if let repo = Repository(json: repositoryJSON) {
                                 repositories.append(repo)
