@@ -160,4 +160,7 @@ playground.xcworkspace
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 
+### Added Files ###
+myID.swift
+
 # End of https://www.gitignore.io/api/swift,xcode,macos,objective-c
