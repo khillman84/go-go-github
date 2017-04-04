@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var auth = GitHubAuthController()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -23,7 +24,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let code = try? GitHub.shared.getCodeFrom(url: url)
         
-        print(code)
+        print(code ?? "No Code")
+        
+        let accessToken = UserDefaults.standard.getAccessToken()
+        
+        if accessToken == nil{
+            GitHub.shared.tokenRequestFor(url: url, saveOptions: .userDefaults) { (success) in
+                if success {
+                    print("Yay, access token")
+                } else {
+                    print("No success")
+                }
+            }
+        }
         return true
     }
 
