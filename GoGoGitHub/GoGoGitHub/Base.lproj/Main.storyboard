@@ -119,11 +119,30 @@
                     <connections>
                         <outlet property="gitRepoList" destination="Lx6-Kj-sGA" id="qvw-6w-HF4"/>
                         <outlet property="searchBar" destination="Nir-wj-xiC" id="ZEJ-d0-Pfs"/>
+                        <segue destination="c6H-EV-wbj" kind="presentation" identifier="RepoDetailViewController" id="yp6-GK-jI9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1F8-fD-r3I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="956" y="136.28185907046478"/>
+        </scene>
+        <!--Repo Detail View Controller-->
+        <scene sceneID="MBk-Ys-7iD">
+            <objects>
+                <viewController id="c6H-EV-wbj" customClass="RepoDetailViewController" customModule="GoGoGitHub" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YlQ-bv-Vmm"/>
+                        <viewControllerLayoutGuide type="bottom" id="wmi-SN-SAu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tbs-ie-tLg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e5a-kX-rO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1830" y="137"/>
         </scene>
     </scenes>
     <resources>

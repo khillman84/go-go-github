@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RepoViewController: UIViewController, UITableViewDelegate {
+class RepoViewController: UIViewController {
     
     var repos = [Repository]() {
         didSet {
@@ -30,6 +30,7 @@ class RepoViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         
         self.gitRepoList.dataSource = self
+        self.gitRepoList.delegate = self
         self.searchBar.delegate = self
         
         update()
@@ -50,10 +51,23 @@ class RepoViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == RepoDetailViewController.identifier {
+            segue.destination.transitioningDelegate = self
+        }
+    }
 }
 
-extension RepoViewController: UITableViewDataSource {
+extension RepoViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return CustomTransition(duration: 1.0)
+    }
+}
+
+extension RepoViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  displayRepos?.count ?? repos.count
@@ -67,6 +81,10 @@ extension RepoViewController: UITableViewDataSource {
         cell.textLabel?.text = self.displayRepos?[indexPath.row].name ?? self.repos[indexPath.row].name
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: RepoDetailViewController.identifier, sender: nil)
     }
     
 }
