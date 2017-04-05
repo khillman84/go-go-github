@@ -97,13 +97,30 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="repoNames" id="2jz-a1-K9O">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepositoryCell" id="2jz-a1-K9O" customClass="RepositoryCell" customModule="GoGoGitHub" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2jz-a1-K9O" id="UFB-SP-7db">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNI-iH-AhU">
+                                                    <rect key="frame" x="8" y="0.0" width="359" height="44"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="GNI-iH-AhU" firstAttribute="leading" secondItem="UFB-SP-7db" secondAttribute="leading" constant="8" id="271-Hp-WKb"/>
+                                                <constraint firstAttribute="trailing" secondItem="GNI-iH-AhU" secondAttribute="trailing" constant="8" id="KhN-Bx-Uzh"/>
+                                                <constraint firstAttribute="bottom" secondItem="GNI-iH-AhU" secondAttribute="bottom" id="jFM-Mo-Hov"/>
+                                                <constraint firstItem="GNI-iH-AhU" firstAttribute="top" secondItem="UFB-SP-7db" secondAttribute="top" id="q5T-PN-S7Q"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="repoCell" destination="GNI-iH-AhU" id="hHV-Nc-YVM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -137,12 +154,37 @@
                     <view key="view" contentMode="scaleToFill" id="tbs-ie-tLg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="AVn-mX-ZHv">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepoNibCell" id="hIu-sW-rV7" customClass="RepoNibCell" customModule="GoGoGitHub" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hIu-sW-rV7" id="ufK-Ut-vHt">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wmi-SN-SAu" firstAttribute="top" secondItem="AVn-mX-ZHv" secondAttribute="bottom" id="72D-p0-RlG"/>
+                            <constraint firstItem="AVn-mX-ZHv" firstAttribute="leading" secondItem="tbs-ie-tLg" secondAttribute="leading" id="NXr-Ue-Rf9"/>
+                            <constraint firstItem="AVn-mX-ZHv" firstAttribute="top" secondItem="tbs-ie-tLg" secondAttribute="top" id="R9o-yg-gmY"/>
+                            <constraint firstAttribute="trailing" secondItem="AVn-mX-ZHv" secondAttribute="trailing" id="ZR5-qR-YIi"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="AVn-mX-ZHv" id="tsd-Vl-uvv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e5a-kX-rO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1830" y="137"/>
+            <point key="canvasLocation" x="1829.5999999999999" y="136.28185907046478"/>
         </scene>
     </scenes>
     <resources>

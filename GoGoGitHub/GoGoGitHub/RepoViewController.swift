@@ -75,9 +75,8 @@ extension RepoViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "repoNames", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RepositoryCell", for: indexPath)
         
-//        let repo = self.repos[indexPath.row]
         cell.textLabel?.text = self.displayRepos?[indexPath.row].name ?? self.repos[indexPath.row].name
         
         return cell
@@ -89,6 +88,7 @@ extension RepoViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
+//MARK: UISearchBar Delegate
 extension RepoViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

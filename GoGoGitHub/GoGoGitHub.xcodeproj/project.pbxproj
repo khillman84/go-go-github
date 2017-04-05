@@ -20,6 +20,9 @@
 		E55C29121E941958009D95AD /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55C29111E941958009D95AD /* Repository.swift */; };
 		E5D9979E1E956E8A0041D0BF /* RepoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D9979D1E956E8A0041D0BF /* RepoDetailViewController.swift */; };
 		E5D997A01E9570740041D0BF /* CustomTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D9979F1E9570740041D0BF /* CustomTransition.swift */; };
+		E5D997A21E9587D40041D0BF /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D997A11E9587D40041D0BF /* RepositoryCell.swift */; };
+		E5D997A51E958B2C0041D0BF /* RepoNibCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D997A31E958B2C0041D0BF /* RepoNibCell.swift */; };
+		E5D997A61E958B2C0041D0BF /* RepoNibCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5D997A41E958B2C0041D0BF /* RepoNibCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,9 @@
 		E55C29111E941958009D95AD /* Repository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		E5D9979D1E956E8A0041D0BF /* RepoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoDetailViewController.swift; sourceTree = "<group>"; };
 		E5D9979F1E9570740041D0BF /* CustomTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTransition.swift; sourceTree = "<group>"; };
+		E5D997A11E9587D40041D0BF /* RepositoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
+		E5D997A31E958B2C0041D0BF /* RepoNibCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepoNibCell.swift; sourceTree = "<group>"; };
+		E5D997A41E958B2C0041D0BF /* RepoNibCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RepoNibCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +89,9 @@
 		E5231A9A1E9335560037CBDA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E5D997A11E9587D40041D0BF /* RepositoryCell.swift */,
+				E5D997A31E958B2C0041D0BF /* RepoNibCell.swift */,
+				E5D997A41E958B2C0041D0BF /* RepoNibCell.xib */,
 				E5231A841E92B1E10037CBDA /* Main.storyboard */,
 			);
 			name = View;
@@ -175,6 +184,7 @@
 				E5231A8B1E92B1E10037CBDA /* LaunchScreen.storyboard in Resources */,
 				E5231A881E92B1E10037CBDA /* Assets.xcassets in Resources */,
 				E5231A861E92B1E10037CBDA /* Main.storyboard in Resources */,
+				E5D997A61E958B2C0041D0BF /* RepoNibCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +201,8 @@
 				E55C29121E941958009D95AD /* Repository.swift in Sources */,
 				E55C290E1E940C11009D95AD /* RepoViewController.swift in Sources */,
 				E5231A951E92CE640037CBDA /* GitHubAuthController.swift in Sources */,
+				E5D997A21E9587D40041D0BF /* RepositoryCell.swift in Sources */,
+				E5D997A51E958B2C0041D0BF /* RepoNibCell.swift in Sources */,
 				E5231A811E92B1E10037CBDA /* AppDelegate.swift in Sources */,
 				E5D997A01E9570740041D0BF /* CustomTransition.swift in Sources */,
 				E5231A991E9334A10037CBDA /* MyID.swift in Sources */,
