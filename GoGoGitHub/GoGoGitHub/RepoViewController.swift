@@ -16,11 +16,13 @@ class RepoViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-//    var displayRepos : [Repository?] {
-//        didSet {
-//            self.gitRepoList.reloadData()
-//        }
-//    }
+    var displayRepos : [Repository]? {
+        didSet {
+            self.gitRepoList.reloadData()
+        }
+    }
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var gitRepoList: UITableView!
 
@@ -28,7 +30,7 @@ class RepoViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         
         self.gitRepoList.dataSource = self
-        self.gitRepoList.delegate = self
+        self.searchBar.delegate = self
         
         update()
     }
@@ -54,22 +56,42 @@ class RepoViewController: UIViewController, UITableViewDelegate {
 extension RepoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return repos.count
+        return  displayRepos?.count ?? repos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "repoNames", for: indexPath)
         
-        let repo = self.repos[indexPath.row]
-        cell.textLabel?.text = repo.name
+//        let repo = self.repos[indexPath.row]
+        cell.textLabel?.text = self.displayRepos?[indexPath.row].name ?? self.repos[indexPath.row].name
         
         return cell
     }
     
 }
 
-
+extension RepoViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if let searchedText = searchBar.text {
+            self.displayRepos = self.repos.filter({$0.name.contains(searchedText)})
+        }
+        
+        if searchBar.text == "" {
+            self.displayRepos = nil
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.displayRepos = nil
+        self.searchBar.resignFirstResponder()
+    }
+    
+    func searchBArSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.resignFirstResponder()
+    }
+}
 
 
 
