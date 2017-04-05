@@ -8,13 +8,19 @@
 
 import UIKit
 
-class RepoViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class RepoViewController: UIViewController, UITableViewDelegate {
     
     var repos = [Repository]() {
         didSet {
             self.gitRepoList.reloadData()
         }
     }
+    
+//    var displayRepos : [Repository?] {
+//        didSet {
+//            self.gitRepoList.reloadData()
+//        }
+//    }
     
     @IBOutlet weak var gitRepoList: UITableView!
 
@@ -42,6 +48,11 @@ class RepoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+
+}
+
+extension RepoViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return repos.count
     }
@@ -55,5 +66,33 @@ class RepoViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         return cell
     }
-
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
