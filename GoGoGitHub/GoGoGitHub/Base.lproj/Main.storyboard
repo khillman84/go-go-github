@@ -48,7 +48,7 @@
                                     <action selector="printTokenPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="IUy-RA-KU1"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github-logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="94l-Ru-J5z">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github_logo_3x" translatesAutoresizingMaskIntoConstraints="NO" id="94l-Ru-J5z">
                                 <rect key="frame" x="87" y="233" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="KwV-65-DJf"/>
@@ -121,6 +121,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="github-logo-1" width="1500" height="1125"/>
+        <image name="github_logo_3x" width="1000" height="750"/>
     </resources>
 </document>
