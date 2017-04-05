@@ -69,7 +69,6 @@
 				E5231A9D1E93357E0037CBDA /* Model */,
 				E5231A9A1E9335560037CBDA /* View */,
 				E5231A9C1E9335660037CBDA /* Controller */,
-				E5231A801E92B1E10037CBDA /* AppDelegate.swift */,
 				E5231A871E92B1E10037CBDA /* Assets.xcassets */,
 				E5231A891E92B1E10037CBDA /* LaunchScreen.storyboard */,
 				E5231A8C1E92B1E10037CBDA /* Info.plist */,
@@ -88,6 +87,7 @@
 		E5231A9C1E9335660037CBDA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E5231A801E92B1E10037CBDA /* AppDelegate.swift */,
 				E55C290D1E940C11009D95AD /* RepoViewController.swift */,
 				E5231A941E92CE640037CBDA /* GitHubAuthController.swift */,
 			);

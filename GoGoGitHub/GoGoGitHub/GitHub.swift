@@ -26,8 +26,8 @@ class GitHub {
     private var session : URLSession
     private var componenents : URLComponents
     
-    let gitHubClientID = myID
-    let gitHubClientSecret = mySecret
+    let gitHubClientID = "9f80088a4d35c48fb2b0"
+    let gitHubClientSecret = "ff63b151329b4757842959f8f3ed9bb24686ffa7"
     
     static let shared = GitHub()
     
@@ -37,11 +37,6 @@ class GitHub {
         
         self.componenents.scheme = "https"
         self.componenents.host = "api.github.com"
-        
-        if let token = UserDefaults.standard.getAccessToken() {
-            let queryItem = URLQueryItem(name: "access_token", value: token)
-            self.componenents.queryItems = [queryItem]
-        }
     }
     
     func oAuthRequestWith(parameters: [String : String]){
@@ -76,16 +71,29 @@ class GitHub {
         do {
             let code = try self.getCodeFrom(url: url)
             
-            let requestString = "\(kOAuthBaseURLString)access_token?clinet_id=\(gitHubClientID)&client_secret=\(gitHubClientSecret)&code=\(code)"
+            let requestString = "\(kOAuthBaseURLString)access_token?client_id=\(gitHubClientID)&client_secret=\(gitHubClientSecret)&code=\(code)"
             
             if let requestURL = URL(string: requestString) {
+                
                 let session = URLSession(configuration: .default)
+                
                 session.dataTask(with: requestURL, completionHandler: { (data, response, error) in
                     if error != nil { complete(success: false) }
+                    
                     guard let data = data else { complete(success: false); return }
+                    
                     if let dataString = String(data: data, encoding: .utf8) {
-                        print(dataString)
-                        if UserDefaults.standard.save(accessToken: dataString) {
+                        var token : String = ""
+                        let components = dataString.components(separatedBy: "&")
+                        
+                        for component in components {
+                            if component.contains("access_token") {
+                                token = component.components(separatedBy: "=").last!
+                                print(token)
+                            }
+                        }
+                        
+                        if UserDefaults.standard.save(accessToken: token) {
                             print("Saved successfully")
                             
                         }
@@ -100,6 +108,11 @@ class GitHub {
     }
     
     func getRepos(completion: @escaping FetchReposCompletion) {
+        
+        if let token = UserDefaults.standard.getAccessToken() {
+            let queryItem = URLQueryItem(name: "access_token", value: token)
+            self.componenents.queryItems = [queryItem]
+        }
         
         func returnToMain(results: [Repository]?) {
             OperationQueue.main.addOperation {
@@ -119,7 +132,7 @@ class GitHub {
                 
                 do {
                     if let rootJson = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String : Any]] {
-                        print(rootJson)
+                        print(rootJson.last ?? "No Root JSON")
                         for repositoryJSON in rootJson {
                             if let repo = Repository(json: repositoryJSON) {
                                 repositories.append(repo)
