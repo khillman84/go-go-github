@@ -33,6 +33,12 @@ class RepoViewController: UIViewController {
         self.gitRepoList.delegate = self
         self.searchBar.delegate = self
         
+        let repoNib = UINib(nibName: "RepoNibCell", bundle: nil)
+        self.gitRepoList.register(repoNib, forCellReuseIdentifier: RepoNibCell.identifier)
+        
+        self.gitRepoList.estimatedRowHeight = 50
+        self.gitRepoList.rowHeight = UITableViewAutomaticDimension
+        
         update()
     }
 
@@ -55,7 +61,13 @@ class RepoViewController: UIViewController {
         super.prepare(for: segue, sender: sender)
         
         if segue.identifier == RepoDetailViewController.identifier {
-            segue.destination.transitioningDelegate = self
+            if let selectedIndex = self.gitRepoList.indexPathForSelectedRow?.row {
+                let selectedRepo = self.repos[selectedIndex]
+                
+                guard let destinationController = segue.destination.transitioningDelegate as? RepoDetailViewController else { return }
+                
+                destinationController.repo = [selectedRepo]
+            }
         }
     }
 }
@@ -75,9 +87,9 @@ extension RepoViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RepositoryCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: RepoNibCell.identifier, for: indexPath) as! RepoNibCell
         
-        cell.textLabel?.text = self.displayRepos?[indexPath.row].name ?? self.repos[indexPath.row].name
+//        cell.textLabel?.text = self.displayRepos?[indexPath.row].name ?? self.repos[indexPath.row].name
         
         return cell
     }
@@ -106,7 +118,7 @@ extension RepoViewController: UISearchBarDelegate {
         self.searchBar.resignFirstResponder()
     }
     
-    func searchBArSearchButtonClicked(_ searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.resignFirstResponder()
     }
 }
