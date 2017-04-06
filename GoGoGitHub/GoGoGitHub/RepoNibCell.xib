@@ -30,7 +30,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repo Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ble-lw-zCl">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repo Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ble-lw-zCl">
                         <rect key="frame" x="0.0" y="115" width="647" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -40,6 +40,7 @@
                 <constraints>
                     <constraint firstItem="Yfm-P1-FjD" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="0P6-Co-a9v"/>
                     <constraint firstItem="ble-lw-zCl" firstAttribute="top" secondItem="Yfm-P1-FjD" secondAttribute="bottom" constant="41" id="2Gq-Vl-XFg"/>
+                    <constraint firstAttribute="bottom" secondItem="ble-lw-zCl" secondAttribute="bottom" constant="189" id="Afj-To-o2k"/>
                     <constraint firstItem="v9S-Tb-wIy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="GXs-A0-YNg"/>
                     <constraint firstAttribute="trailing" secondItem="ble-lw-zCl" secondAttribute="trailing" id="H7H-CV-SCN"/>
                     <constraint firstItem="Yfm-P1-FjD" firstAttribute="top" secondItem="v9S-Tb-wIy" secondAttribute="bottom" constant="32.5" id="XBt-jX-DHL"/>

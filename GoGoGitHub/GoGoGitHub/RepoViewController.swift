@@ -89,7 +89,9 @@ extension RepoViewController: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: RepoNibCell.identifier, for: indexPath) as! RepoNibCell
         
-//        cell.textLabel?.text = self.displayRepos?[indexPath.row].name ?? self.repos[indexPath.row].name
+        let repo = self.repos[indexPath.row]
+        
+        cell.repo = repo
         
         return cell
     }

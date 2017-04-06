@@ -38,8 +38,8 @@ extension RepoDetailViewController: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: RepoNibCell.identifier, for: indexPath) as! RepoNibCell
         
-        let repo = self.repo[indexPath.row]
-        cell.repo = repo
+//        let repo = self.repo[indexPath.row]
+//        cell.repo = repo
         
         return cell
     }
