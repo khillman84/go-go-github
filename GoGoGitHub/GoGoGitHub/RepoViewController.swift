@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RepoViewController: UIViewController, UITableViewDelegate {
+class RepoViewController: UIViewController {
     
     var repos = [Repository]() {
         didSet {
@@ -30,7 +30,14 @@ class RepoViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
         
         self.gitRepoList.dataSource = self
+        self.gitRepoList.delegate = self
         self.searchBar.delegate = self
+        
+        let repoNib = UINib(nibName: "RepoNibCell", bundle: nil)
+        self.gitRepoList.register(repoNib, forCellReuseIdentifier: RepoNibCell.identifier)
+        
+        self.gitRepoList.estimatedRowHeight = 50
+        self.gitRepoList.rowHeight = UITableViewAutomaticDimension
         
         update()
     }
@@ -50,10 +57,29 @@ class RepoViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == RepoDetailViewController.identifier {
+            if let selectedIndex = self.gitRepoList.indexPathForSelectedRow?.row {
+                let selectedRepo = self.repos[selectedIndex]
+                
+                guard let destinationController = segue.destination.transitioningDelegate as? RepoDetailViewController else { return }
+                
+                destinationController.repo = [selectedRepo]
+            }
+        }
+    }
 }
 
-extension RepoViewController: UITableViewDataSource {
+extension RepoViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return CustomTransition(duration: 1.0)
+    }
+}
+
+extension RepoViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return  displayRepos?.count ?? repos.count
@@ -61,16 +87,22 @@ extension RepoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "repoNames", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: RepoNibCell.identifier, for: indexPath) as! RepoNibCell
         
-//        let repo = self.repos[indexPath.row]
-        cell.textLabel?.text = self.displayRepos?[indexPath.row].name ?? self.repos[indexPath.row].name
+        let repo = self.repos[indexPath.row]
+        
+        cell.repo = repo
         
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: RepoDetailViewController.identifier, sender: nil)
+    }
+    
 }
 
+//MARK: UISearchBar Delegate
 extension RepoViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -88,7 +120,7 @@ extension RepoViewController: UISearchBarDelegate {
         self.searchBar.resignFirstResponder()
     }
     
-    func searchBArSearchButtonClicked(_ searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.resignFirstResponder()
     }
 }
