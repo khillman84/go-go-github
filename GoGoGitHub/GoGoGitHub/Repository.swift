@@ -14,6 +14,8 @@ class Repository {
     let description : String?
     let language : String?
     
+    let repoUrlString : String
+    
     init?(json: [String : Any]) {
 
         
@@ -24,6 +26,7 @@ class Repository {
         self.name = name
         self.description = description
         self.language = language
+        self.repoUrlString = json["html_url"] as? String ?? "https://ww.github.com"
         print(name)
     }
 }

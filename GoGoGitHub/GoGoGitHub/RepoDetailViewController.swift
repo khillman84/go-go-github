@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class RepoDetailViewController: UIViewController {
     
@@ -25,6 +26,28 @@ class RepoDetailViewController: UIViewController {
         self.tableView.delegate = self
         self.tableView.estimatedRowHeight = 50
         self.tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    @IBAction func moreDetailsPressed(_ sender: Any) {
+        
+//        guard let repo = repo else { return }
+//        presentSafariViewControllerWith(urlString: repo.repoUrlString)
+//        presentWebViewControllerWith(urlString: repo.repoUrlString)    //web view version
+    }
+    
+    func presentSafariViewControllerWith(urlString: String) {
+        
+        guard let url = URL(string: urlString) else { return }
+        let safariController = SFSafariViewController(url: url)
+        self.present(safariController, animated: true, completion: nil)
+    }
+    
+    func presentWebViewControllerWith(urlString: String) {
+        
+        let webController = WebViewController()
+        webController.url = urlString
+        
+        self.present(webController, animated: true, completion: nil)
     }
 }
 
